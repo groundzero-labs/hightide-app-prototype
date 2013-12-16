@@ -30,6 +30,6 @@ dependencies {
     compile group: 'io.hightide', name: 'hightide-core', version:'$hightideVersion$'
     
     // The following two dependencies are for application DEV phase.
-    compile files("${System.getProperty('java.home')}/../lib/tools.jar")
+    compile files("\${System.getProperty('java.home')}/../lib/tools.jar")
     runtime group: 'io.hightide', name: 'hightide-devassist', version: '$hightideVersion$'
 }
