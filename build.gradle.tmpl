@@ -1,6 +1,17 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath group: 'io.hightide', name: 'gradle-hightide-plugin', version: '$hightideVersion$'
+    }
+}
+
 apply plugin: 'java'
 apply plugin: 'maven'
-apply plugin: 'application'
+apply plugin: 'hightide'
 
 group = '$groupId$'
 version = '$version$'
@@ -10,8 +21,6 @@ description = """$name$"""
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-mainClassName = "io.hightide.Application"
-
 repositories {
      mavenLocal()   
      mavenCentral()
@@ -19,4 +28,8 @@ repositories {
 
 dependencies {
     compile group: 'io.hightide', name: 'hightide-core', version:'$hightideVersion$'
+    
+    // The following two dependencies are for application DEV phase.
+    compile files("${System.getProperty('java.home')}/../lib/tools.jar")
+    runtime group: 'io.hightide', name: 'hightide-devassist', version: '$hightideVersion$'
 }
